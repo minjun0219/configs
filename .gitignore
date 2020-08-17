@@ -1,0 +1,8 @@
+# Node.js Modules
+node_modules
+
+# Create React App (CRA) build target directory
+build
+
+# macOS finder
+.DS_Store
