@@ -1,4 +1,4 @@
-const { rules } = require('../index');
+const { rules, overrides } = require('../index');
 
 module.exports = {
   root: true,
@@ -8,4 +8,5 @@ module.exports = {
   ],
   extends: 'airbnb-typescript',
   rules,
+  overrides,
 };

@@ -1,6 +1,9 @@
 /* eslint-env node */
 module.exports = {
   extends: 'airbnb',
+  plugins: [
+    'jest',
+  ],
   rules: {
     // React 컴포넌트 작성 시 Hooks를 이용해 확장을 할 수 있으므로 해당 Rule을 Off한다.
     // https://eslint.org/docs/rules/arrow-body-style
@@ -19,4 +22,19 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-spreading.md
     'react/jsx-props-no-spreading': 'off',
   },
+  overrides: [
+    // all test files
+    {
+      files: [
+        '*.test.ts',
+      ],
+      env: {
+        'jest/globals': true,
+      },
+      rules: {
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+      },
+    },
+  ],
 };
