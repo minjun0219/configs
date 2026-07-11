@@ -19,7 +19,7 @@
     "publish:dry": "pnpm -r publish --dry-run --no-git-checks"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
+    "@biomejs/biome": "^2.5.0",
     "@minjun0219/biome-config": "workspace:*",
     "@minjun0219/tsconfig": "workspace:*",
     "typescript": "^5.5.0"

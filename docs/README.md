@@ -24,7 +24,7 @@ docs/
 
 | 문서 | 매핑되는 config |
 | --- | --- |
-| [`style-guide/formatting.md`](./style-guide/formatting.md) | [`packages/biome-config/biome.jsonc`](../packages/biome-config/biome.jsonc) — `formatter`, `files.lineEnding` |
+| [`style-guide/formatting.md`](./style-guide/formatting.md) | [`packages/biome-config/biome.jsonc`](../packages/biome-config/biome.jsonc) — `formatter.*` (`indentStyle`, `indentWidth`, `lineWidth`, `lineEnding`), `json.formatter.*` |
 | [`style-guide/javascript.md`](./style-guide/javascript.md) | [`packages/biome-config/biome.jsonc`](../packages/biome-config/biome.jsonc) — `linter`, `javascript.*` |
 | [`style-guide/typescript.md`](./style-guide/typescript.md) | [`packages/tsconfig/tsconfig.json`](../packages/tsconfig/tsconfig.json) |
 | [`style-guide/css.md`](./style-guide/css.md) | [`packages/biome-config/biome.jsonc`](../packages/biome-config/biome.jsonc) — `css.*` |

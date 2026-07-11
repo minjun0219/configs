@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.0.0
+        specifier: ^2.5.0
         version: 2.5.3
       '@minjun0219/biome-config':
         specifier: workspace:*

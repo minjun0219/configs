@@ -7,11 +7,11 @@ Airbnb 기반 ESLint 7 / TypeScript 3.9 시대 설정입니다. Biome 로 전환
 
 ## 설치 (아카이브 용, 신규 사용 비권장)
 
-패키지를 설치하기 위해서는 Github Packages에서 패키지를 설치할 수 있도록 `registry`설정이 필요합니다.
+패키지를 설치하기 위해서는 GitHub Packages 에서 패키지를 설치할 수 있도록 `registry` 설정이 필요합니다.
 
 ```bash
 # .npmrc
-registry=https://npm.pkg.github.com
+@minjun0219:registry=https://npm.pkg.github.com
 ```
 
 > [Installing a package][installing-a-package]
@@ -54,11 +54,11 @@ JavaScript만을 사용할 때에는 아래와 같이 설정 합니다.
 // .eslintrc.js
 module.exports = {
   extends: '@minjun0219/eslint-config/typescript/requiring-type-checking',
-    parserOptions: {
+  parserOptions: {
     project: './tsconfig.eslint.json',
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 Type Checking이 함께 되면 ESLint의 [실행 속도에 영향](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/TYPED_LINTING.md)이 있습니다.
