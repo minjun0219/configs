@@ -7,11 +7,11 @@ Airbnb 기반 ESLint 7 / TypeScript 3.9 시대 설정입니다. Biome 로 전환
 
 ## 설치 (아카이브 용, 신규 사용 비권장)
 
-패키지를 설치하기 위해서는 GitHub Packages 에서 패키지를 설치할 수 있도록 `registry` 설정이 필요합니다.
+이 패키지는 GitHub Packages 의 `@minjunk/eslint-config@1.0.0` 이후 발행되지 않았습니다 (이후 `@minjun0219` 로 스코프가 이관되면서 신규 발행 중단 — 소스 이름은 `@minjun0219/eslint-config` 이지만 tarball 은 발행된 적이 없습니다). 아래는 그 시절의 사용법을 참고용으로 남겨둔 것입니다.
 
 ```bash
-# .npmrc
-@minjun0219:registry=https://npm.pkg.github.com
+# .npmrc — GitHub Packages 를 통해 레거시 tarball 을 install 하는 경우에만 필요
+@minjunk:registry=https://npm.pkg.github.com
 ```
 
 > [Installing a package][installing-a-package]
@@ -19,13 +19,13 @@ Airbnb 기반 ESLint 7 / TypeScript 3.9 시대 설정입니다. Biome 로 전환
 **yarn**
 
 ```bash
-yarn add -D @minjun0219/eslint-config
+yarn add -D @minjunk/eslint-config
 ```
 
 **npm**
 
 ```bash
-npm install -D @minjun0219/eslint-config
+npm install -D @minjunk/eslint-config
 ```
 
 ## 설정
@@ -35,7 +35,7 @@ JavaScript만을 사용할 때에는 아래와 같이 설정 합니다.
 ```json
 // .eslintrc
 {
-  "extends": "@minjun0219/eslint-config"
+  "extends": "@minjunk/eslint-config"
 }
 ```
 
@@ -44,7 +44,7 @@ JavaScript만을 사용할 때에는 아래와 같이 설정 합니다.
 ```json
 // .eslintrc
 {
-  "extends": "@minjun0219/eslint-config/typescript"
+  "extends": "@minjunk/eslint-config/typescript"
 }
 ```
 
@@ -53,7 +53,7 @@ JavaScript만을 사용할 때에는 아래와 같이 설정 합니다.
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: '@minjun0219/eslint-config/typescript/requiring-type-checking',
+  extends: '@minjunk/eslint-config/typescript/requiring-type-checking',
   parserOptions: {
     project: './tsconfig.eslint.json',
     tsconfigRootDir: __dirname,

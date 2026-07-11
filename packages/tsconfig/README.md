@@ -4,13 +4,6 @@ Node 20+ 을 타깃으로 하는 TypeScript 베이스 `tsconfig.json`. [`@tsconf
 
 ## 설치
 
-GitHub Packages 레지스트리를 사용합니다.
-
-```
-# .npmrc
-@minjun0219:registry=https://npm.pkg.github.com
-```
-
 ```bash
 pnpm add -D @minjun0219/tsconfig
 ```
