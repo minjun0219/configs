@@ -18,7 +18,7 @@
     "typecheck": "tsc --showConfig",
     "publish:dry": "pnpm -r publish --dry-run --no-git-checks",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "version": "changeset version && pnpm install --lockfile-only",
     "release": "changeset publish"
   },
   "devDependencies": {
