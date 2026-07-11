@@ -1,0 +1,18 @@
+{
+  "name": "@minjun0219/tsconfig",
+  "version": "0.1.0",
+  "description": "TypeScript 베이스 tsconfig",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minjun0219/configs.git",
+    "directory": "packages/tsconfig"
+  },
+  "files": [
+    "tsconfig.json"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  }
+}

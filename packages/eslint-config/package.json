@@ -1,0 +1,34 @@
+{
+  "name": "@minjun0219/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Deprecated. Use @minjun0219/biome-config instead.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minjun0219/configs.git",
+    "directory": "packages/eslint-config"
+  },
+  "files": [
+    "typescript",
+    "index.js"
+  ],
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "3.6.0",
+    "@typescript-eslint/parser": "3.6.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-airbnb-typescript": "8.0.2",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-react": "7.20.3",
+    "eslint-plugin-react-hooks": "4.0.6",
+    "typescript": "^3.9.7"
+  },
+  "peerDependencies": {
+    "eslint": ">=6"
+  },
+  "devDependencies": {
+    "eslint": "7.7.0"
+  }
+}

@@ -1,8 +1,12 @@
-# Node.js Modules
+# Node.js modules
 node_modules
 
-# Create React App (CRA) build target directory
+# Build outputs
 build
+dist
+
+# pnpm
+.pnpm-store
 
 # macOS finder
 .DS_Store

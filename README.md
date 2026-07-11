@@ -1,74 +1,55 @@
-# ESLint Config
+# @minjun0219/configs
 
-## 설치
+Minjun 의 공용 개발 설정 monorepo. Biome 및 TypeScript 베이스 설정을 개별 패키지로 발행합니다.
 
-패키지를 설치하기 위해서는 Github Packages에서 패키지를 설치할 수 있도록 `registry`설정이 필요합니다.
+## 패키지
 
-```bash
-# .npmrc
-registry=https://npm.pkg.github.com
-```
+| 패키지 | 설명 | 상태 |
+| --- | --- | --- |
+| [`@minjun0219/biome-config`](./packages/biome-config) | Biome 공용 설정 (린트 + 포맷) | 활성 |
+| [`@minjun0219/tsconfig`](./packages/tsconfig) | TypeScript 베이스 tsconfig | 활성 |
+| [`@minjun0219/eslint-config`](./packages/eslint-config) | 구 ESLint 설정 (Airbnb 기반) | **Deprecated** — Biome 로 이전 |
 
-> [Installing a package][installing-a-package]
+발행 레지스트리는 [GitHub Packages](https://npm.pkg.github.com) 만 사용합니다.
 
-**yarn**
+## 개발
 
-```bash
-yarn add -D @minjunk/eslint-config
-```
-
-**npm**
+패키지 매니저는 pnpm 을 사용합니다.
 
 ```bash
-npm install -D @minjunk/eslint-config
+pnpm install                   # 워크스페이스 설치
+pnpm lint                      # biome check .
+pnpm typecheck                 # tsc --showConfig (extends 체인 검증)
+pnpm publish:dry               # pnpm -r publish --dry-run
 ```
 
-## 설정
+## 소비 방식
 
-JavaScript만을 사용할 때에는 아래와 같이 설정 합니다.
+각 패키지 README 를 참조하세요. 공통적으로 소비자 저장소의 `.npmrc` 에 다음 줄이 필요합니다.
 
-```json
-// .eslintrc
-{
-  "extends": "@minjunk"
-}
+```
+@minjun0219:registry=https://npm.pkg.github.com
 ```
 
-다만, TypeScript를 함께 사용하고자 할 때에는 아래와 같이 설정 되어야 합니다.
+인증이 필요한 환경에서는 다음 줄을 추가로 넣습니다.
 
-```json
-// .eslintrc
-{
-  "extends": "@minjunk/eslint-config/typescript"
-}
+```
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
 
-위와 같이 설정하게 되면 TypeScript 사용 시에 Type Checking은 제외됩니다. Type Checking이 필요하다면 아래와 같이 설정이 가능합니다.
+## 스타일 가이드
 
-```js
-// .eslintrc.js
-module.exports = {
-  extends: '@minjunk/eslint-config/typescript/requiring-type-checking',
-    parserOptions: {
-    project: './tsconfig.eslint.json',
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+각 패키지가 강제하는 규칙과 근거는 [`docs/`](./docs) 에 정리돼 있습니다. config 값을 바꿀 때는 문서를 먼저 갱신하고 config 를 그 결정에 맞추는 워크플로우를 따릅니다.
 
-Type Checking이 함께 되면 ESLint의 [실행 속도에 영향](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/TYPED_LINTING.md)이 있습니다.
+- [`docs/style-guide/formatting.md`](./docs/style-guide/formatting.md) — 공통 포매팅
+- [`docs/style-guide/javascript.md`](./docs/style-guide/javascript.md) — JS/TS
+- [`docs/style-guide/typescript.md`](./docs/style-guide/typescript.md) — TypeScript 컴파일러 옵션
+- [`docs/style-guide/css.md`](./docs/style-guide/css.md) — CSS
 
-```json
-// tsconfig.json
-{
-  "extends": "./tsconfig.json",
-  "include": [
-    "src/**/*.tsx",
-    "src/**/*.ts",
-    "**/*.js",
-    ".eslintrc.js"
-  ]
-}
-```
+## 라이선스
 
-[installing-a-package]: https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package
+MIT — [`LICENSE`](./LICENSE) 참조.
+
+## 배경
+
+방향과 결정 근거는 [`AGENTS.md`](./AGENTS.md) 에 정리돼 있습니다.

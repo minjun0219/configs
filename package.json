@@ -1,30 +1,27 @@
 {
-  "name": "@minjunk/eslint-config",
-  "version": "1.0.0",
-  "license": "UNLICENSED",
-  "files": [
-    "typescript",
-    "index.js"
-  ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "name": "@minjun0219/configs",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Minjun 의 공용 개발 설정 monorepo (Biome, TypeScript)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minjun0219/configs.git"
   },
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "3.6.0",
-    "@typescript-eslint/parser": "3.6.0",
-    "eslint-config-airbnb": "18.2.0",
-    "eslint-config-airbnb-typescript": "8.0.2",
-    "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-jest": "^23.20.0",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-react": "7.20.3",
-    "eslint-plugin-react-hooks": "4.0.6",
-    "typescript": "^3.9.7"
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
   },
-  "peerDependencies": {
-    "eslint": ">=6"
+  "scripts": {
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --showConfig",
+    "publish:dry": "pnpm -r publish --dry-run --no-git-checks"
   },
   "devDependencies": {
-    "eslint": "7.7.0"
+    "@biomejs/biome": "^2.5.0",
+    "@minjun0219/biome-config": "workspace:*",
+    "@minjun0219/tsconfig": "workspace:*",
+    "typescript": "^5.5.0"
   }
 }
