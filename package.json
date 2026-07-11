@@ -16,10 +16,14 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "typecheck": "tsc --showConfig",
-    "publish:dry": "pnpm -r publish --dry-run --no-git-checks"
+    "publish:dry": "pnpm -r publish --dry-run --no-git-checks",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.0",
+    "@changesets/cli": "^2.31.0",
     "@minjun0219/biome-config": "workspace:*",
     "@minjun0219/tsconfig": "workspace:*",
     "typescript": "^5.5.0"

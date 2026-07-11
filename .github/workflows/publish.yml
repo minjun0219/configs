@@ -1,17 +1,25 @@
 name: Publish
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      pull-requests: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
         with:
@@ -26,7 +34,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Publish workspace packages
-        run: pnpm -r publish --access public --no-git-checks
+      - name: Verify
+        run: |
+          pnpm biome check .
+          pnpm typecheck
+
+      - name: Create Release PR or Publish
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          publish: pnpm changeset publish
+          commit: 'chore: release packages'
+          title: 'chore: release packages'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
