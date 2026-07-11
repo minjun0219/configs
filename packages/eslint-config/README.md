@@ -7,10 +7,10 @@ Airbnb 기반 ESLint 7 / TypeScript 3.9 시대 설정입니다. Biome 로 전환
 
 ## 설치 (아카이브 용, 신규 사용 비권장)
 
-패키지를 설치하기 위해서는 GitHub Packages 에서 패키지를 설치할 수 있도록 `registry` 설정이 필요합니다.
+이 패키지는 GitHub Packages 의 `@minjun0219/eslint-config@1.0.0` 이후 발행되지 않았습니다 (당시 스코프는 `@minjunk`, 이후 `@minjun0219` 로 이관되면서 신규 발행 중단). 아래는 그 시절의 사용법을 참고용으로 남겨둔 것입니다.
 
 ```bash
-# .npmrc
+# .npmrc — GitHub Packages 를 통해 레거시 tarball 을 install 하는 경우에만 필요
 @minjun0219:registry=https://npm.pkg.github.com
 ```
 

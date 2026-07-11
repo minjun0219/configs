@@ -19,7 +19,7 @@
     "@biomejs/biome": ">=2.5.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
 }

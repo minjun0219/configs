@@ -4,13 +4,7 @@
 
 ## 설치
 
-GitHub Packages 레지스트리를 사용합니다. 소비자 저장소에 `.npmrc` 를 추가하세요.
-
-```
-@minjun0219:registry=https://npm.pkg.github.com
-```
-
-Biome 는 peer dependency 이므로 별도 설치가 필요합니다.
+Biome 는 peer dependency 이므로 함께 설치합니다.
 
 ```bash
 pnpm add -D @minjun0219/biome-config @biomejs/biome
