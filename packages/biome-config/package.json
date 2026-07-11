@@ -1,6 +1,6 @@
 {
   "name": "@minjun0219/biome-config",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Biome 공용 설정 (린트 + 포맷)",
   "license": "MIT",
   "repository": {
