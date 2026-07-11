@@ -136,13 +136,18 @@ configs/                             (repo renamed on GitHub)
   "name": "@minjun0219/biome-config",
   "version": "0.1.0",
   "license": "MIT",
-  "exports": { ".": "./biome.jsonc" },
+  "exports": {
+    ".": "./biome.jsonc",
+    "./biome.jsonc": "./biome.jsonc"
+  },
   "files": ["biome.jsonc"],
   "peerDependencies": {
     "@biomejs/biome": ">=2.0.0"
   }
 }
 ```
+
+`"./biome.jsonc"` 서브패스를 함께 노출해서, 소비자가 명시 경로(`"@minjun0219/biome-config/biome.jsonc"`) 로 참조하거나 pnpm 심볼릭 링크 우회 케이스에서도 해석되도록 합니다.
 
 ### 4.3 `@minjun0219/tsconfig`
 
@@ -153,9 +158,11 @@ configs/                             (repo renamed on GitHub)
   "name": "@minjun0219/tsconfig",
   "version": "0.1.0",
   "license": "MIT",
-  "files": ["tsconfig.json", "react.json"]
+  "files": ["tsconfig.json"]
 }
 ```
+
+`react.json` 등 프리셋을 추가할 때 `files` 배열도 함께 확장합니다. `files` 에 존재하지 않는 파일이 있으면 `pnpm publish` 가 `ENOENT` 로 실패하므로, 실제로 파일을 생성한 시점에만 배열에 넣습니다.
 
 ### 4.4 루트 `.npmrc`
 
