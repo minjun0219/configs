@@ -13,6 +13,7 @@
 - 푸시 후 draft PR 자동 생성이 기본 (열린 PR 이 없을 때)
 - 기준 저장소 URL: `https://github.com/minjun0219/configs`
 - 커밋 메시지는 이 저장소의 기존 커밋 스타일을 따를 것 (Korean 헤더, 필요 시 한/영 혼용)
+- **소비자에게 노출되는 변경(`packages/*` 코드/설정)** 을 담은 PR 은 반드시 `pnpm changeset` 으로 `.changeset/*.md` 를 함께 커밋. 버전 결정과 CHANGELOG 생성은 Version PR 이 자동으로 처리하므로 `package.json` 의 `version` 을 직접 편집하지 않음. 문서/워크플로 전용 변경은 changeset 불필요
 
 ## 도구 사용
 
