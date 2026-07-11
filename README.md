@@ -37,6 +37,15 @@ pnpm publish:dry               # pnpm -r publish --dry-run
 //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
 
+## 스타일 가이드
+
+각 패키지가 강제하는 규칙과 근거는 [`docs/`](./docs) 에 정리돼 있습니다. config 값을 바꿀 때는 문서를 먼저 갱신하고 config 를 그 결정에 맞추는 워크플로우를 따릅니다.
+
+- [`docs/style-guide/formatting.md`](./docs/style-guide/formatting.md) — 공통 포매팅
+- [`docs/style-guide/javascript.md`](./docs/style-guide/javascript.md) — JS/TS
+- [`docs/style-guide/typescript.md`](./docs/style-guide/typescript.md) — TypeScript 컴파일러 옵션
+- [`docs/style-guide/css.md`](./docs/style-guide/css.md) — CSS
+
 ## 라이선스
 
 MIT — [`LICENSE`](./LICENSE) 참조.

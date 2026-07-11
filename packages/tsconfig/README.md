@@ -24,6 +24,12 @@ pnpm add -D @minjun0219/tsconfig
 }
 ```
 
+## 결정 근거
+
+각 옵션의 값과 근거는 스타일 가이드 문서에 정리돼 있습니다.
+
+- [`docs/style-guide/typescript.md`](../../docs/style-guide/typescript.md)
+
 ## 포함된 옵션 요약
 
 - `target`: `es2022`
