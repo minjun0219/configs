@@ -11,7 +11,7 @@
 ## Pull Request
 
 - 푸시 후 draft PR 자동 생성이 기본 (열린 PR 이 없을 때)
-- 리네임 이후 기준 저장소 URL: `https://github.com/minjun0219/configs`
+- 기준 저장소 URL: `https://github.com/minjun0219/configs`
 - 커밋 메시지는 이 저장소의 기존 커밋 스타일을 따를 것 (Korean 헤더, 필요 시 한/영 혼용)
 
 ## 도구 사용
@@ -23,7 +23,6 @@
 ## 다음 세션 시작 시 확인 순서
 
 1. `AGENTS.md` 정독 — 계획된 monorepo 방향과 검증 체크리스트를 파악
-2. 현재 리포 이름이 `configs` 인지 확인 (`git remote -v`)
-3. `AGENTS.md` §7 verification checklist 를 따라 실제 구조 변경 시작
+2. `AGENTS.md` §7 verification checklist 를 따라 실제 구조 변경 시작
 
 프로젝트 상태·목표·설정 세부는 `AGENTS.md` 를 소스로 삼고 이 문서에는 중복 기재하지 않습니다.

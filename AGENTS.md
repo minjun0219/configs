@@ -9,7 +9,7 @@
 현재는 단일 패키지 리포로, `@minjunk/eslint-config` 를 GitHub Packages 에 발행합니다. Airbnb 기반 ESLint 7 / TypeScript 3.9 시대 설정입니다.
 
 - **Owner**: `minjun0219`
-- **Repo**: 현재 `eslint-config` (곧 `configs` 로 리네임 예정)
+- **Repo**: `configs` (구 `eslint-config` 에서 리네임 완료)
 - **패키지 매니저**: yarn (v1, `yarn.lock`)
 - **발행 레지스트리**: GitHub Packages (`https://npm.pkg.github.com`)
 - **가시성**: 프라이빗 (곧 퍼블릭 전환 예정)
@@ -78,7 +78,7 @@ npm view @minjun0219/tsconfig --registry=https://npm.pkg.github.com
 ## 3. Target file layout (다음 세션 구현 목표)
 
 ```
-configs/                             (repo renamed on GitHub)
+configs/
 ├── package.json                     private: true, name "@minjun0219/configs"
 ├── pnpm-workspace.yaml              packages: [packages/*]
 ├── .npmrc                           @minjun0219:registry=https://npm.pkg.github.com
