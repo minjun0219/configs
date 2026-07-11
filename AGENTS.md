@@ -6,46 +6,46 @@
 
 ## 1. Overview
 
-현재는 단일 패키지 리포로, `@minjunk/eslint-config` 를 GitHub Packages 에 발행합니다. Airbnb 기반 ESLint 7 / TypeScript 3.9 시대 설정입니다.
+pnpm 기반 monorepo 로 공용 개발 설정(Biome, TypeScript) 을 개별 패키지로 관리하고 GitHub Packages 에 발행합니다.
 
 - **Owner**: `minjun0219`
 - **Repo**: `configs` (구 `eslint-config` 에서 리네임 완료)
-- **패키지 매니저**: yarn (v1, `yarn.lock`)
+- **패키지 매니저**: pnpm workspaces (`pnpm-workspace.yaml`, `pnpm-lock.yaml`)
 - **발행 레지스트리**: GitHub Packages (`https://npm.pkg.github.com`)
-- **가시성**: 프라이빗 (곧 퍼블릭 전환 예정)
+- **가시성**: 프라이빗 (퍼블릭 전환은 후속 작업 — §7 참조)
 
-이 저장소는 앞으로 pnpm 기반 monorepo 로 재구성되어 여러 개의 공용 개발 설정(Biome, TypeScript 등)을 개별 패키지로 관리하게 됩니다. 아래 "Planned direction" 참조.
+기존 Airbnb 기반 ESLint 7 / TypeScript 3.9 설정은 `packages/eslint-config/` 로 이관되었고 `private: true` 로 발행이 차단됐습니다.
 
 ---
 
-## 2. Planned direction (다음 세션 실행 대상)
+## 2. Direction (완료)
 
-이번 세션은 방향만 문서화하고 실제 구조 변경은 **다음 세션**에서 진행합니다. 다음 에이전트는 이 섹션을 근거로 곧바로 실행할 수 있어야 합니다.
+원래 "다음 세션 실행 대상" 이었던 항목들. 아래 상태는 실제 리포 구조와 일치합니다.
 
-### 2.1 스코프 통일
+### 2.1 스코프 통일 — 완료
 
 - `@minjunk/*` → **`@minjun0219/*`**
 - 기존 `@minjunk` 스코프는 GitHub 오너(`minjun0219`) 와 불일치해 GitHub Packages 발행 조건과 어긋납니다. GitHub Packages 는 npm 스코프가 오너 이름(사용자/조직) 과 일치해야 합니다.
 
-### 2.2 리포 공개 & 라이선스
+### 2.2 라이선스 — 완료 / 리포 공개 — 미완
 
-- 프라이빗 → **퍼블릭**
-- 루트에 `LICENSE` (MIT) 추가
+- 루트 `LICENSE` (MIT) 추가됨
+- 프라이빗 → 퍼블릭 전환은 GitHub 저장소 설정 액션이라 코드에서 처리 불가. §7 후속 작업 참조
 
-### 2.3 툴링 전환
+### 2.3 툴링 전환 — 완료
 
 - yarn v1 → **pnpm workspaces**
 - `yarn.lock` 삭제, `pnpm-workspace.yaml` + `pnpm-lock.yaml` 도입
 
-### 2.4 패키지 구성
+### 2.4 패키지 구성 — 완료
 
 | 패키지 | 역할 | 비고 |
 | --- | --- | --- |
-| `@minjun0219/biome-config` | Biome 공용 설정 (린트 + 포맷) | `exports: {".": "./biome.jsonc"}`, peer `@biomejs/biome >= 2` |
+| `@minjun0219/biome-config` | Biome 공용 설정 (린트 + 포맷) | `exports: {".": "./biome.jsonc"}`, peer `@biomejs/biome >= 2.5.0` (Biome 2.5 부터 `rules.preset` 문법 요구) |
 | `@minjun0219/tsconfig` | TypeScript 베이스 tsconfig | `@tsconfig/node20` 스타일 — `main`/`exports` 없이 `tsconfig.json` 을 패키지 루트에 배치. 소비자는 `extends: "@minjun0219/tsconfig/tsconfig.json"` 로 명시 경로 참조 |
 | `@minjun0219/eslint-config` | 기존 ESLint 설정 (**deprecated**) | `packages/eslint-config/` 로 이동, `private: true` 로 두어 신규 발행 차단. README 에 deprecation 배너 추가 |
 
-### 2.5 배포 정책
+### 2.5 배포 정책 — 완료
 
 - **GitHub Packages 만** 사용 (npmjs.org 발행 안 함)
 - 각 발행 패키지 `publishConfig`:
@@ -57,13 +57,13 @@
     }
   }
   ```
-- 각 패키지에 `repository.url` + `repository.directory` 필수. 없으면 GitHub Packages 페이지에서 소스 링크가 orphan 상태가 됩니다.
+- 각 패키지에 `repository.url` + `repository.directory` 필수 — 없으면 GitHub Packages 페이지에서 소스 링크가 orphan 상태가 됩니다.
 
-### 2.6 소비 방식 & 검증 필요 사항
+### 2.6 소비 방식 & 남은 검증 사항
 
 리포 퍼블릭 전환의 목적은 "**토큰 없이 참조**" 입니다. 다만 GitHub Packages(npm) 는 오랫동안 퍼블릭 패키지라도 install 시 인증을 요구해왔습니다.
 
-**다음 세션 첫 검증 단계**: 발행 이후 인증 없는 셸에서 다음 명령이 정상 응답하는지 확인.
+**후속 세션 첫 검증 단계**: 발행 이후 인증 없는 셸에서 다음 명령이 정상 응답하는지 확인.
 ```bash
 npm view @minjun0219/tsconfig --registry=https://npm.pkg.github.com
 ```
@@ -75,7 +75,7 @@ npm view @minjun0219/tsconfig --registry=https://npm.pkg.github.com
 
 ---
 
-## 3. Target file layout (다음 세션 구현 목표)
+## 3. Repository layout
 
 ```
 configs/
@@ -220,14 +220,24 @@ pnpm 심볼릭 링크 이슈로 해석 실패 시 상대 경로 fallback:
 
 ---
 
-## 7. Verification checklist (다음 세션 실행 순서)
+## 7. Verification 결과 & 남은 작업
 
-1. `pnpm install` — 루트에서 성공, `packages/*/node_modules` 심링크 생성
-2. `pnpm -r publish --dry-run` — 발행 대상은 `biome-config`, `tsconfig` 만. tarball 에 `files` 명시분만 포함 확인
-3. 셀프 lint: `pnpm biome check .` — workspace 링크로 `@minjun0219/biome-config` 해석
-4. 셀프 tsc: 루트 `tsconfig.json` 이 `@minjun0219/tsconfig/tsconfig.json` 을 extends, `tsc --showConfig` 확인
-5. **익명 접근 검증** (2.6 참조) — `npm view @minjun0219/tsconfig --registry=https://npm.pkg.github.com`
-6. 스크래치 리포 소비자 시나리오:
+리네임 + 구조 재구성 커밋 시점(2026-07-11) 로컬 검증 결과:
+
+1. `pnpm install` — 성공 (4 workspace projects, `packages/*/node_modules` 심링크 생성됨)
+2. `pnpm -r publish --dry-run` — 통과. tarball 요약:
+   - `@minjun0219/biome-config@0.1.0`: `LICENSE`, `README.md`, `biome.jsonc`, `package.json` (4 files, 1.9 kB)
+   - `@minjun0219/tsconfig@0.1.0`: `LICENSE`, `README.md`, `package.json`, `tsconfig.json` (4 files, 1.7 kB)
+   - `@minjun0219/eslint-config` 은 `private: true` 로 dry-run 대상에서 제외
+3. `pnpm biome check .` — 통과 (extends 로 `@minjun0219/biome-config` 해석, 레거시 `packages/eslint-config/` 는 루트 `files.includes` 에서 제외)
+4. `pnpm typecheck` (`tsc --showConfig`) — 통과. 베이스 `@minjun0219/tsconfig/tsconfig.json` 이 해석돼 `strict`, `noUncheckedIndexedAccess` 등 병합 확인
+5. 저장소에 실제 TS 소스가 없어 루트 `tsconfig.json` 은 `"files": []` 로 두고 extends 해석 검증에만 사용
+
+**후속 작업 (이 리포에서 처리 불가):**
+
+- **리포 퍼블릭 전환** — GitHub 저장소 설정에서 직접 전환 필요
+- **익명 접근 검증** (§2.6) — `npm view @minjun0219/tsconfig --registry=https://npm.pkg.github.com` 응답 확인. 401/403 이면 §2.6 옵션 A/B 재검토
+- **스크래치 리포 소비자 시나리오**:
    ```bash
    mkdir /tmp/consume && cd /tmp/consume
    echo '@minjun0219:registry=https://npm.pkg.github.com' > .npmrc
@@ -235,4 +245,4 @@ pnpm 심볼릭 링크 이슈로 해석 실패 시 상대 경로 fallback:
    pnpm add -D @minjun0219/biome-config @minjun0219/tsconfig @biomejs/biome
    # biome.jsonc / tsconfig.json 에 extends 설정 후 biome check / tsc --showConfig
    ```
-7. GitHub Actions `publish.yml` 이 `GITHUB_TOKEN` + `packages: write` 로 dry-run 성공
+- **첫 릴리스 태그 발행** — GitHub Actions `publish.yml` 이 `GITHUB_TOKEN` + `packages: write` 로 실제 발행 성공하는지 확인

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.3/schema.json",
+  "extends": ["@minjun0219/biome-config"],
+  "files": {
+    "includes": ["**", "!packages/eslint-config", "!**/node_modules"]
+  }
+}

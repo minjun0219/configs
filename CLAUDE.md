@@ -22,7 +22,7 @@
 
 ## 다음 세션 시작 시 확인 순서
 
-1. `AGENTS.md` 정독 — 계획된 monorepo 방향과 검증 체크리스트를 파악
-2. `AGENTS.md` §7 verification checklist 를 따라 실제 구조 변경 시작
+1. `AGENTS.md` 정독 — 완료된 방향과 남은 후속 작업(§7) 을 파악
+2. `pnpm install && pnpm biome check . && pnpm typecheck && pnpm publish:dry` 로 로컬 상태 재확인
 
 프로젝트 상태·목표·설정 세부는 `AGENTS.md` 를 소스로 삼고 이 문서에는 중복 기재하지 않습니다.
